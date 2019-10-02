@@ -140,5 +140,9 @@ On peut voir que les interfaces emp0s3 et enp0s8 sont filtrées, aucun port n'es
 
 ## II. Edit configuration
 
+🌞 modifier la configuration de la carte réseau privée
+
 Pour changer l'ip j'ai utilisé nmtui 192.168.48.7
 ![capture](https://github.com/ombrax2796/B2-R-seauxTP1/blob/master/Capture.PNG "capture")
+
+ajouter une nouvelle carte réseau dans un DEUXIEME réseau privé UNIQUEMENT privé

@@ -69,6 +69,7 @@
       192.168.48.0/24 dev enp0s3 proto kernel scope link src 192.168.48.4 metric 100
  
 cette route est vers le réseau 10.0.3.15, elle est utilisée pour une connexion locale, la passerelle de cette route est à l'IP 10.0.3.0.(ligne2)
+
 cette route est vers le réseau 192.168.48.4, elle est utilisée pour une connexion externe, la passerelle de cette route est à l'IP 192.168.48.0.(ligne3)
 
 

@@ -1,11 +1,13 @@
 # B2-R-seauxTP1
+      
+I. Gather informations
 
-sudo nmcli -f networkmanager
-              DHCP4 can show
-              
-  *-----------------
-  
-      enp0s8: connected to enp0s8
+
+🌞 récupérer une liste des cartes réseau avec leur nom, leur IP et leur adresse MAC
+   
+   
+    [root@localhost ~]#sudo nmcli -f networkmanager
+     enp0s8: connected to enp0s8
               "Intel 82540EM"
               ethernet (e1000), 08:00:27:37:F7:76, hw, mtu 1500
               ip4 default
@@ -26,7 +28,9 @@ sudo nmcli -f networkmanager
               route6 fe80::/64
    *-------------------
    
-            
+   
+ 🌞 déterminer si les cartes réseaux ont récupéré une IP en DHCP ou non  
+          
  sudo nmcli -f DHCP4 con show enp0s3 rien
  sudo nmcli -f DHCP4 con show enp0s8 :
  
@@ -54,5 +58,15 @@ sudo nmcli -f networkmanager
       DHCP4.OPTION[21]:                       requested_wpad = 1
       DHCP4.OPTION[22]:                       routers = 10.0.3.2
       DHCP4.OPTION[23]:                       subnet_mask = 255.255.255.0
+
+
+
+🌞 afficher la table de routage de la machine et sa table ARP
+      
+      [root@localhost ~]# ip route
+    default via 10.0.3.2 dev enp0s8 proto dhcp metric 101
+    10.0.3.0/24 dev enp0s8 proto kernel scope link src 10.0.3.15 metric 101
+    192.168.48.0/24 dev enp0s3 proto kernel scope link src 192.168.48.4 metric 100
+
 
 

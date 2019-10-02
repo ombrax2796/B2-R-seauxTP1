@@ -4,6 +4,7 @@ sudo nmcli -f networkmanager
               DHCP4 can show
               
   *-----------------
+  
       enp0s8: connected to enp0s8
               "Intel 82540EM"
               ethernet (e1000), 08:00:27:37:F7:76, hw, mtu 1500
@@ -24,9 +25,12 @@ sudo nmcli -f networkmanager
               route6 ff00::/8
               route6 fe80::/64
    *-------------------
+   
             
  sudo nmcli -f DHCP4 con show enp0s3 rien
  sudo nmcli -f DHCP4 con show enp0s8 :
+ 
+ 
       DHCP4.OPTION[1]:                        domain_name = auvence.co
       DHCP4.OPTION[2]:                        domain_name_servers = 10.33.10.20 10.33.10.2 8.8.8.8 8.8.4.4
       DHCP4.OPTION[3]:                        expiry = 1569599339

@@ -61,12 +61,21 @@
 
 
 
-🌞 afficher la table de routage de la machine et sa table ARP
+🌞 afficher la table de routage de la machine:
       
       [root@localhost ~]# ip route
-    default via 10.0.3.2 dev enp0s8 proto dhcp metric 101
-    10.0.3.0/24 dev enp0s8 proto kernel scope link src 10.0.3.15 metric 101
-    192.168.48.0/24 dev enp0s3 proto kernel scope link src 192.168.48.4 metric 100
+      default via 10.0.3.2 dev enp0s8 proto dhcp metric 101
+      10.0.3.0/24 dev enp0s8 proto kernel scope link src 10.0.3.15 metric 101
+      192.168.48.0/24 dev enp0s3 proto kernel scope link src 192.168.48.4 metric 100
+ 
+cette route est vers le réseau 10.0.3.15, elle est utilisée pour une connexion locale, la passerelle de cette route est à l'IP 10.0.3.0.(ligne2)
+cette route est vers le réseau 192.168.48.4, elle est utilisée pour une connexion externe, la passerelle de cette route est à l'IP 192.168.48.0.(ligne3)
 
+
+et sa table ARP :
+
+      [root@localhost ~]# ip n
+      192.168.48.1 dev enp0s3 lladdr 0a:00:27:00:00:0c DELAY
+      10.0.3.2 dev enp0s8 lladdr 52:54:00:12:35:02 REACHABLE
 
 

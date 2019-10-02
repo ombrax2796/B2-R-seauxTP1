@@ -146,3 +146,69 @@ Pour changer l'ip j'ai utilisé nmtui 192.168.48.7
 ![capture](https://github.com/ombrax2796/B2-R-seauxTP1/blob/master/Capture.PNG "capture")
 
 ajouter une nouvelle carte réseau dans un DEUXIEME réseau privé UNIQUEMENT privé
+
+
+      [root@localhost ~]# ip a
+      1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+          link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+          inet 127.0.0.1/8 scope host lo
+             valid_lft forever preferred_lft forever
+          inet6 ::1/128 scope host
+             valid_lft forever preferred_lft forever
+      2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+          link/ether 08:00:27:84:ec:e1 brd ff:ff:ff:ff:ff:ff
+          inet 192.168.48.4/24 brd 192.168.48.255 scope global noprefixroute enp0s3
+             valid_lft forever preferred_lft forever
+          inet6 fe80::a00:27ff:fe84:ece1/64 scope link
+             valid_lft forever preferred_lft forever
+      3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+          link/ether 08:00:27:37:f7:76 brd ff:ff:ff:ff:ff:ff
+          inet 10.0.3.15/24 brd 10.0.3.255 scope global dynamic noprefixroute enp0s8
+             valid_lft 78752sec preferred_lft 78752sec
+          inet6 fe80::2c5b:ead:4d52:f0d4/64 scope link noprefixroute
+             valid_lft forever preferred_lft forever
+      4: enp0s9: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+          link/ether 08:00:27:9f:1a:64 brd ff:ff:ff:ff:ff:ff
+          inet 192.168.47.5/24 brd 192.168.155.255 scope global noprefixroute enp0s9
+             valid_lft forever preferred_lft forever
+          inet6 fe80::b824:c276:f895:8b46/64 scope link noprefixroute
+             valid_lft forever preferred_lft forever
+             
+On vérifie les table :
+
+      [root@localhost ~]# ip route
+      default via 10.0.2.2 dev enp0s3 proto dhcp metric 100
+      10.0.2.0/24 dev enp0s3 proto kernel scope link src 10.0.2.15 metric 100
+      192.168.47.0/24 dev enp0s9 proto kernel scope link src 192.168.47.5 metric 104
+      192.168.176.0/24 dev enp0s8 proto kernel scope link src 192.168.176.9 metric 103
+      
+## 2. Serveur SSH
+
+🌞 modifier la configuration du système pour que le serveur SSH tourne sur le port 2222
+
+Il faut seulement modifier /etc/ssh/sshd_config pour changer de port. Pour cela faire "cd /etc/ssh" et modifier grâce a "vi sshd_config"
+  
+  
+      [root@localhost ~]$ sudo firewall-cmd --permanent --add-port=2222/tcp
+      success
+      [root@localhost ~]$ sudo firewall-cmd --permanent --remove-port=22/tcp
+      success
+      [root@localhost ~]$ sudo firewall-cmd --reload
+      success
+      
+## IV. Autres applications et métrologie
+
+🌞 jouer avec iftop
+Elle permet de surveiller notre utilisation de la bande passante.
+
+🌞 mettre en place cockpit sur la VM1
+
+      [root@clone ~]$ sudo ss -ltu
+      Netid   State     Recv-Q    Send-Q            Local Address:Port                  Peer Address:Port    
+      udp     UNCONN    0         0              10.0.2.15%enp0s3:bootpc                     0.0.0.0:*       
+      tcp     LISTEN    0         128                     0.0.0.0:EtherNet/IP-1              0.0.0.0:*       
+      tcp     LISTEN    0         128                           *:websm                            *:*       
+      tcp     LISTEN    0         128                        [::]:EtherNet/IP-1                 [::]:*       
+      
+🌞 explorer Cockpit, plus spécifiquement ce qui est en rapport avec le réseau
+On peut se connecter à l'interface web de cockpit à l'adresse du clone sur le port 9090.

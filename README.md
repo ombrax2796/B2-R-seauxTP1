@@ -1,6 +1,6 @@
 # B2-R-seauxTP1
       
-## 1.Gather informations
+## I.Gather informations
 
 
 🌞 récupérer une liste des cartes réseau avec leur nom, leur IP et leur adresse MAC
@@ -136,4 +136,8 @@ Les adresses ip sont donc 151.101.121.140 et 192.168.1.1
               icmp-blocks:
               rich rules:
 
-On peut voir que les interfaces emp0s3 et enp0s8 sont filtrées, aucun port n'est autorisés
+On peut voir que les interfaces emp0s3 et enp0s8 sont filtrées, aucun port n'est autorisés.
+
+## II. Edit configuration
+
+Pour changer l'ip j'ai utilisé nmtui 192.168.48.7

@@ -1,6 +1,6 @@
 # B2-R-seauxTP1
       
-I. Gather informations
+1. Gather informations
 
 
 🌞 récupérer une liste des cartes réseau avec leur nom, leur IP et leur adresse MAC

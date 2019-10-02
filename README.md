@@ -141,4 +141,4 @@ On peut voir que les interfaces emp0s3 et enp0s8 sont filtrées, aucun port n'es
 ## II. Edit configuration
 
 Pour changer l'ip j'ai utilisé nmtui 192.168.48.7
-![capture](https://www.google.fr/images/srpr/logo11w.png "capture")
+![capture](https://github.com/ombrax2796/B2-R-seauxTP1/blob/master/Capture.PNG "capture")
